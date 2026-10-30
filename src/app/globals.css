@@ -1,0 +1,194 @@
+@import "@fontsource-variable/inter";
+@import "@fontsource-variable/playfair-display";
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-serif: "Playfair Display Variable", "Playfair Display", Georgia, "Times New Roman", serif;
+  --font-sans: "Inter Variable", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  /* ===== BRAND COLOURS — change these and the whole website follows ===== */
+  --color-primary: #8c1d40;
+  --color-primary-hover: #701632;
+  --color-primary-soft: #f5dce4;
+  --color-primary-faint: #fcf2f5;
+  --color-gold: #b88a3e;
+  --color-gold-soft: #f4e8d1;
+  --color-ink: #28181d;
+  --color-body: #6a555c;
+  --color-surface: #fbf6f1;
+  --color-line: #eaded6;
+  --color-success: #2f855a;
+  --color-warning: #c27b1a;
+  --color-whatsapp: #25d366;
+  --color-card: #ffffff;
+
+  --shadow-card: 0 1px 2px rgb(60 20 30 / 0.04), 0 2px 8px rgb(60 20 30 / 0.05);
+  --shadow-lift: 0 18px 36px -16px rgb(60 20 30 / 0.28);
+
+  --animate-pulse-ring: pulse-ring 2.4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  --animate-shimmer: shimmer 1.6s ease-in-out infinite;
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-marquee: marquee var(--marquee-duration, 40s) linear infinite;
+
+  @keyframes pulse-ring {
+    0% { box-shadow: 0 0 0 0 rgb(37 211 102 / 0.55); }
+    70% { box-shadow: 0 0 0 16px rgb(37 211 102 / 0); }
+    100% { box-shadow: 0 0 0 0 rgb(37 211 102 / 0); }
+  }
+  @keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+  :root {
+    --page: #fffdfb;
+    --skeleton-a: #f1e8e2;
+    --skeleton-b: #faf5f1;
+    color-scheme: light;
+  }
+  body {
+    background: var(--page);
+    color: var(--color-body);
+    font-family: var(--font-sans);
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+  h1, h2, h3, h4 {
+    color: var(--color-ink);
+    font-family: var(--font-serif);
+    letter-spacing: -0.005em;
+    line-height: 1.18;
+    font-weight: 600;
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+    border-radius: 6px;
+  }
+  ::selection { background: var(--color-primary-soft); color: var(--color-ink); }
+  img, svg { max-width: 100%; }
+}
+
+@layer components {
+  .container-x {
+    width: 100%;
+    max-width: 80rem;
+    margin-inline: auto;
+    padding-inline: clamp(1rem, 4vw, 2rem);
+  }
+  @media (min-width: 1536px) {
+    .container-x { max-width: 88rem; }
+  }
+  .text-display { font-family: var(--font-serif); font-size: clamp(2.4rem, 1.2rem + 4.8vw, 4.75rem); line-height: 1.04; letter-spacing: -0.02em; font-weight: 600; }
+  .text-h2 { font-size: clamp(1.7rem, 1.1rem + 2vw, 2.75rem); letter-spacing: -0.01em; }
+  .eyebrow { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: var(--color-gold); }
+  .gold-rule { height: 1px; background: linear-gradient(90deg, transparent, var(--color-gold), transparent); }
+  .text-lead { font-size: clamp(1rem, 0.95rem + 0.3vw, 1.1875rem); line-height: 1.7; }
+  .section { padding-block: clamp(3rem, 2rem + 4vw, 6rem); }
+  .skeleton {
+    background: linear-gradient(90deg, var(--skeleton-a) 25%, var(--skeleton-b) 37%, var(--skeleton-a) 63%);
+    background-size: 200% 100%;
+    animation: var(--animate-shimmer);
+    border-radius: 0.75rem;
+  }
+  .no-scrollbar { scrollbar-width: none; }
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+
+  /* Dual-handle price range */
+  .range-dual { position: relative; height: 44px; }
+  .range-dual input[type="range"] {
+    position: absolute; inset: 0; width: 100%; height: 44px; margin: 0;
+    background: none; pointer-events: none; -webkit-appearance: none; appearance: none;
+  }
+  .range-dual input[type="range"]::-webkit-slider-runnable-track { background: transparent; height: 4px; }
+  .range-dual input[type="range"]::-moz-range-track { background: transparent; height: 4px; }
+  .range-dual input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none; appearance: none; pointer-events: auto;
+    width: 22px; height: 22px; border-radius: 9999px; margin-top: -9px;
+    background: #fff; border: 2px solid var(--color-primary);
+    box-shadow: 0 2px 6px rgb(60 20 30 / 0.25); cursor: grab;
+  }
+  .range-dual input[type="range"]::-moz-range-thumb {
+    pointer-events: auto; width: 18px; height: 18px; border-radius: 9999px;
+    background: #fff; border: 2px solid var(--color-primary);
+    box-shadow: 0 2px 6px rgb(60 20 30 / 0.25); cursor: grab;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ------------------------------------------------------------------------------
+   Dark mode. The <html> element gets the "dark" class (see ThemeToggle + the inline
+   script in app/layout.tsx). Components only use tokens (bg-card, text-ink, border-line…),
+   so remapping the variables below re-themes the whole site and the dashboard.
+   ---------------------------------------------------------------------------- */
+.dark {
+  color-scheme: dark;
+  --page: #150d10;
+  --skeleton-a: #261a1f;
+  --skeleton-b: #33242b;
+
+  --color-card: #1f1419;
+  --color-surface: #150d10;
+  --color-ink: #faf1ec;
+  --color-body: #cdb9bf;
+  --color-line: #3b2a31;
+  --color-gold: #d3a85a;
+  --color-gold-soft: #3a2d17;
+  --color-primary-faint: #2c141c;
+  --color-primary-soft: #4d1f31;
+  --shadow-card: 0 1px 2px rgb(0 0 0 / 0.3), 0 1px 3px rgb(0 0 0 / 0.25);
+  --shadow-lift: 0 14px 32px -14px rgb(0 0 0 / 0.6);
+
+  --color-emerald-50: #0d2b20;  --color-emerald-200: #14532d;  --color-emerald-700: #6ee7b7;
+  --color-sky-50: #0c2a3f;      --color-sky-100: #0e3a5c;      --color-sky-200: #0c4a6e;   --color-sky-700: #7dd3fc;
+  --color-amber-50: #2d2108;    --color-amber-200: #78350f;    --color-amber-700: #fcd34d;
+  --color-blue-50: #0f2347;     --color-blue-200: #1e3a8a;     --color-blue-700: #93c5fd;
+  --color-red-50: #3b1114;      --color-red-100: #4c1519;      --color-red-400: #f87171;   --color-red-600: #f87171;  --color-red-700: #fca5a5;
+  --color-slate-100: #2a1d23;   --color-slate-200: #3b2a31;    --color-slate-300: #54404a;
+  --color-slate-500: #a8949b;   --color-slate-600: #d3c1c7;
+}
+
+/* Brand colour text needs to be lighter on dark surfaces to stay readable (buttons keep the solid brand colour). */
+.dark .text-primary,
+.dark .hover\:text-primary:hover,
+.dark .group:hover .group-hover\:text-primary {
+  color: #f19cb6;
+}
+.dark ::placeholder { color: #8a98b0; }
+
+/* ---- Lenis smooth scroll ---- */
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+.lenis.lenis-stopped { overflow: clip; }
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee { overflow-x: auto; }
+  .marquee-track { animation: none; }
+}

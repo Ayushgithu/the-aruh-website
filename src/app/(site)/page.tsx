@@ -33,11 +33,11 @@ export default async function HomePage() {
       </section>
 
       {flash.length > 0 && (
-        <section className="section container-x !pt-0">
+        <section className="section container-x pt-0!">
           <Reveal>
-            <div className="rounded-3xl bg-gradient-to-br from-primary via-[#6f1633] to-[#3d0c1c] p-5 text-white sm:p-8">
+            <div className="rounded-3xl bg-linear-to-br from-primary via-[#6f1633] to-[#3d0c1c] p-5 text-white sm:p-8">
               <div className="mb-6 flex flex-wrap items-center justify-between gap-4">
-                <div><p className="eyebrow !text-[#e7c98a]">⚡ Flash sale</p><h2 className="mt-1 text-2xl !text-white sm:text-3xl">Grab them before the timer ends</h2></div>
+                <div><p className="eyebrow text-[#e7c98a]!">⚡ Flash sale</p><h2 className="mt-1 text-2xl text-white! sm:text-3xl">Grab them before the timer ends</h2></div>
                 <Countdown endsAt={flash[0].flash!.endsAt} />
               </div>
               <div className="rounded-2xl bg-card p-4 text-ink sm:p-6"><ProductShelf products={flash.slice(0, 4)} /></div>
@@ -46,7 +46,7 @@ export default async function HomePage() {
         </section>
       )}
 
-      <section className="section container-x !pt-0">
+      <section className="section container-x pt-0!">
         <Reveal><SectionTitle eyebrow="Loved by many" title="Best sellers" description="The pieces our customers keep coming back for." href="/shop" cta="View all" /></Reveal>
         <Reveal><ProductShelf products={best.slice(0, 8)} /></Reveal>
       </section>

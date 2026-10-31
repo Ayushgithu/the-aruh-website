@@ -12,16 +12,16 @@ export const site = {
   name: process.env.NEXT_PUBLIC_BRAND_NAME || "The Aaruh",
   tagline: "Handcrafted ethnic & everyday wear",
   description: "Beautiful suit sets, sarees, co-ords and dresses — designed with love, stitched with care and delivered to your door.",
-  phone: "+91 98765 43210",
-  phoneHref: "tel:+919876543210",
-  whatsapp: "919876543210", // country code + number, no "+" or spaces
-  email: "hello@theaaruh.in",
-  address: ["Your shop / studio address", "City, State PIN"],
+  phone: "+91 7869102041",
+  phoneHref: "tel:+91-7869102041",
+  whatsapp: "+91-7869102041", // country code + number, no "+" or spaces
+  email: "poojaayra813@gmail.com",
+  address: ["1169, sector 9 gurgaon haryana", "Gurgaon, Haryana 122001", "India"],
   hours: [
     { day: "Monday – Saturday", time: "10:30 AM – 8:00 PM" },
     { day: "Sunday", time: "11:00 AM – 5:00 PM" },
   ],
-  mapQuery: "Your city",
+  mapQuery: "1169, sector 9 gurgaon haryana",
   social: { instagram: "https://instagram.com/", facebook: "https://facebook.com/", youtube: "https://youtube.com/" },
   instagramHandle: "@theaaruh",
   exchangeDays: 7,

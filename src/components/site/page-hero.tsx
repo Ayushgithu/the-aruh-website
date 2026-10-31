@@ -19,7 +19,7 @@ export function Breadcrumbs({ crumbs }: { crumbs: { label: string; href?: string
 
 export function PageHero({ title, description, crumbs }: { title: string; description?: string; crumbs: { label: string; href?: string }[] }) {
   return (
-    <section className="border-b border-line bg-gradient-to-b from-primary-faint/60 to-card">
+    <section className="border-b border-line bg-linear-to-b from-primary-faint/60 to-card">
       <div className="container-x py-8 sm:py-12">
         <Breadcrumbs crumbs={crumbs} />
         <h1 className="mt-4 text-[clamp(1.75rem,1.2rem+2.4vw,3rem)]">{title}</h1>

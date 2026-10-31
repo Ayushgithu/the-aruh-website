@@ -164,10 +164,10 @@ export function UspCards() {
 
 /* ----------------------------------------------------------------- instagram */
 export function InstagramGrid({ products }: { products: Product[] }) {
-  const cells = Array.from({ length: 6 }, (_, i) => products[i]);
+  const cells = Array.from({ length: 3 }, (_, i) => products[i]);
   return (
     <>
-      <ul className="grid grid-cols-3 gap-2 sm:gap-3 lg:grid-cols-6">
+      <ul className="grid grid-cols-3 gap-2 sm:gap-3 lg:grid-cols-3">
         {cells.map((p, i) => (
           <li key={i}>
             <a href={site.social.instagram} target="_blank" rel="noopener noreferrer" aria-label="Open Instagram" className="group relative block aspect-square overflow-hidden rounded-xl bg-surface">
